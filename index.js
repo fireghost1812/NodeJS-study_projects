@@ -2,12 +2,13 @@ var ansi = require('ansi');
 var cursor = ansi(process.stdout);
 cursor.beep();
 //
+var colors = require('colors');
 var request = require('request');
 
 request.get('http://nodeguide.ru/').pipe(
     request.put('https://nodejs.org/api/stream.html')
 );
-console.log(request);
+console.log(request + 'request'.green);
 
 
 
