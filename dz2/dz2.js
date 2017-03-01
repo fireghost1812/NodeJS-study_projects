@@ -8,6 +8,7 @@ const readline = require('readline');
         input:process.stdin,
         output: process.stdout
     });
+    //util.inspect(arg,{depth:N}); == console.dir(arg)  --if depth=2
     //console.log(process.env)
     //rl.on('line')
     rl.question('head or tail?', throwMoney =>{
@@ -29,7 +30,7 @@ const readline = require('readline');
         }
 
         console.log(until.inspect(arg));
-    })
+    });
 /*
 fs.exists(path, callback) - проверка существования файла.
 fs.readFile(filename, [options], callback) - чтение файла целиком.
