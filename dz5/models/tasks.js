@@ -1,30 +1,34 @@
-const mysql=require('mysql');
-const connection=mysql.createPool({
-    host:'localhost',
-    database:'tasks',
-    user:'root',
-    password:'root'
-});
-
-pool.getConnection(function(err,connection){
-    connection.release();
-});
+const connection = require('./config');
 
 const Tasks = {
-    list: function(callback){
-        pool.getConnection(function(err,connection){
-            if(err) return callback(err);
-            connection.query('SELECT * FROM tasks WHERE 1',function(err,rows){
-                if(err) return callback(err);
+    list: function(tasks){
+       return new Promise((resolve,reject)=>{
+       pool.getConnection(function(err,connection){
+            if(err) return reject(err);
+            connection.query(`'SELECT * FROM ${tasks}, WHERE ${tasks}'`,function(err,rows){
+                if(err) return reject(err);
 
-                callback(null,rows);
+                resolve(rows);
 
                 connection.release();
             });
         });
+       });
     },
-    add:function(tasks,callback){
+    add:function(tasks){
         //TO DO
+        return new Promise((resolve,reject)=>{
+        pool.getConnection(function(err,connection){
+            if(err) return reject(err);
+            connection.query(`SELECT * FROM tasks WHERE 1`,function(err,rows){
+                if(err) return reject(err);
+
+                resolve(rows);
+
+                connection.release();
+            });
+        });
+       });
     },
     change: function(id, text, callback) {
         // TODO
