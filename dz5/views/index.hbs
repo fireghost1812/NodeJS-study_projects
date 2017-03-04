@@ -1,0 +1,12 @@
+<div class="user">
+    <h1>{{username}}</h1>
+    {{if error}}
+            <h2>Ошибка!{{error}}</h2>
+<div class="features">
+    <ul>
+        {{#each features}}
+        <li>{{this}}</li>
+        {{/each}}
+    </ul>
+</div>
+</div>
